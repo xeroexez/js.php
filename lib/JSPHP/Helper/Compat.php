@@ -16,7 +16,6 @@ if(!function_exists('lcfirst')){
  /**
  * See if mbstring compiled/enabled 
  * 
- * 
  */
 if (!extension_loaded('mbstring')) {
 	if((PHP_OS == 'WINNT') && (@dl('php_mbstring'))){
