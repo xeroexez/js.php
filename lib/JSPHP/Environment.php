@@ -31,6 +31,16 @@ class JSPHP_Environment {
     }
     
     /**
+ 	* Save the dinosaurs
+ 	*/
+   function __construct($bCompat = true){
+	   	if($bCompat){
+			require_once 'Helper/Compat.php';
+	   	}
+   }
+   
+    
+    /**
      * Load default components if they have not been supplied.
      */
     function initComponents() {
