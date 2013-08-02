@@ -55,7 +55,10 @@ class JSPHP_Runtime_Common_StringPrototype {
         throw new Exception("Regular expressions are not implemented yet");
     }
     function replace__onObject($str, $from, $to) {
-        throw new Exception("Regular expressions are not implemented yet");
+		if(substr_count($sep, '/') > 1){
+			throw new Exception("Regular expressions are not implemented yet");
+		}
+		return (string)str_replace($from,$to,$str);
     }
     function search__onObject($str, $val) {
         throw new Exception("Regular expressions are not implemented yet");
@@ -70,9 +73,12 @@ class JSPHP_Runtime_Common_StringPrototype {
             return iconv_substr($str, $from, $to - $from, 'UTF-8');
         }
     }
-    function split__onObject($str, $sep) {
-        throw new Exception("Regular expressions are not implemented yet");
-    }
+	function split__onObject($str, $sep) {
+		if(substr_count($sep, '/') > 1){
+			throw new Exception("Regular expressions are not implemented yet");
+		}
+		return (array)explode($sep, $str);
+	}
     function substr__onObject($str, $from, $length = null) {
         if ($from < 0) {
             $from = iconv_strlen($str, 'UTF-8') + $from;
